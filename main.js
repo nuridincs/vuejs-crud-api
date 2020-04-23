@@ -39,8 +39,15 @@ new Vue({
       }, 1000)
     },
 
-    deleteProduct(sku) {
-      console.log('sku delete', sku);
+    processDeleteProduct(sku) {
+      this.sku = sku;
+    },
+
+    deleteProduct() {
+      const response = axios.delete(`${url}/delete/${this.sku}`, this.form);
+      setTimeout(() => {
+        location.reload();
+      }, 1000)
     },
   }
 })
